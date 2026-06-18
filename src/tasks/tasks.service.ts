@@ -1,3 +1,4 @@
+
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { Prisma, Task } from '@prisma/client';
 import { PrismaService } from '../prisma/prisma.service';
@@ -139,7 +140,7 @@ export class TasksService {
    * which is why `update`, `remove`, and `findOne` need no explicit `return`
    * statement inside their catch blocks.
    */
-  private handlePrismaError(error: any, id: string): never {
+  private handlePrismaError(error: unknown, id: string): never {
     if (
       error instanceof Prisma.PrismaClientKnownRequestError &&
       error.code === PRISMA_RECORD_NOT_FOUND

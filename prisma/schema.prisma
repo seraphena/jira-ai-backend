@@ -1,9 +1,11 @@
+
 datasource db {
   provider = "postgresql"
 }
 
 generator client {
-  provider = "prisma-client-js"
+  provider   = "prisma-client-js"
+  engineType = "library"
 }
 
 model User {
@@ -20,8 +22,8 @@ model Task {
   id          String    @id @default(uuid())
   title       String
   description String?
-  status      String    @default("TODO")       // TODO, IN_PROGRESS, DONE
-  priority    String    @default("MEDIUM")     // LOW, MEDIUM, HIGH
+  status      String    @default("TODO")
+  priority    String    @default("MEDIUM")
   assigneeId  String?
   assignee    User?     @relation("Assignee", fields: [assigneeId], references: [id])
   comments    Comment[]
